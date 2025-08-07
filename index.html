@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bennett University - Aayush Singhal</title>
   <style>
     body {
@@ -34,13 +35,22 @@
       margin-top: 5px;
     }
 
-    .quote {
+    blockquote.quote {
       font-style: italic;
       margin-top: 40px;
       color: #eee;
       font-size: 20px;
       border-top: 2px solid #444;
       padding-top: 20px;
+      quotes: "“" "”" "‘" "’";
+    }
+
+    blockquote.quote::before {
+      content: open-quote;
+    }
+
+    blockquote.quote::after {
+      content: close-quote;
     }
 
     footer {
@@ -53,19 +63,15 @@
 <body>
   <div class="container">
     <div class="logo">
-      <!-- Option 1: Local image -->
-      <!-- <img src="logo.png" alt="Bennett University Logo"> -->
-
-      <!-- Option 2: Online image -->
       <img src="bennettlogo.png" alt="Bennett University Logo">
     </div>
 
     <h1>Aayush Singhal</h1>
     <h2>Enrollment No: E23CSEU1430</h2>
 
-    <div class="quote">
-      "Artificial Intelligence is not just the future – it is the engine of tomorrow's possibilities."
-    </div>
+    <blockquote class="quote">
+      Artificial Intelligence is not just the future – it is the engine of tomorrow's possibilities.
+    </blockquote>
 
     <footer>
       &copy; 2025 Bennett University | All Rights Reserved
