@@ -5,31 +5,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Aayush Singhal - Resume</title>
   <style>
-    /* Background */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Reset */
+    * {
       margin: 0;
       padding: 0;
-      color: #333;
-      background: linear-gradient(135deg, #e0f7fa, #e1bee7);
+      box-sizing: border-box;
+    }
+
+    /* Background gradient and font */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       background-attachment: fixed;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* Floating animation */
+    @keyframes float {
+      0%   { transform: translateY(0px); }
+      50%  { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* Floating background circles */
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(0, 212, 255, 0.2);
+      animation: float 6s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    .circle1 {
+      width: 140px;
+      height: 140px;
+      top: 60px;
+      left: 50px;
+    }
+
+    .circle2 {
+      width: 100px;
+      height: 100px;
+      bottom: 120px;
+      right: 80px;
+      animation-delay: 1s;
+    }
+
+    .circle3 {
+      width: 180px;
+      height: 180px;
+      bottom: 50px;
+      left: 120px;
+      animation-delay: 2s;
     }
 
     /* Resume container */
     .container {
       max-width: 900px;
-      margin: 40px auto;
-      background: rgba(255, 255, 255, 0.9);
+      margin: 60px auto;
+      background: rgba(255, 255, 255, 0.05);
       padding: 40px 50px;
       border-radius: 15px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 30px rgba(0, 212, 255, 0.1);
+      backdrop-filter: blur(10px);
+      position: relative;
+      z-index: 1;
     }
 
-    /* Header section */
+    /* Header */
     .header {
       text-align: center;
-      border-bottom: 2px solid #ddd;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
       padding-bottom: 20px;
       margin-bottom: 30px;
     }
@@ -37,25 +84,27 @@
     .header img {
       width: 100px;
       margin-bottom: 10px;
+      animation: float 4s ease-in-out infinite;
     }
 
     h1 {
       font-size: 32px;
-      color: #0f2027;
+      color: #00d4ff;
       margin: 10px 0 5px;
+      animation: float 5s ease-in-out infinite;
     }
 
     h2 {
       font-size: 18px;
       font-weight: normal;
-      color: #555;
+      color: #ccc;
     }
 
     .quote {
       font-style: italic;
-      color: #555;
+      color: #ffdf91;
       font-size: 18px;
-      margin-top: 10px;
+      margin-top: 15px;
     }
 
     section {
@@ -64,8 +113,8 @@
 
     section h3 {
       font-size: 22px;
-      color: #203a43;
-      border-bottom: 2px solid #ccc;
+      color: #00e5ff;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
       padding-bottom: 5px;
       margin-bottom: 15px;
     }
@@ -76,6 +125,7 @@
 
     li {
       margin-bottom: 8px;
+      color: #eee;
     }
 
     .info {
@@ -83,7 +133,7 @@
       justify-content: space-between;
       flex-wrap: wrap;
       margin-top: 10px;
-      color: #444;
+      color: #ccc;
     }
 
     .info div {
@@ -96,30 +146,55 @@
       }
     }
 
-    footer {
-      text-align: center;
-      font-size: 14px;
-      color: #777;
-      margin-top: 40px;
-    }
-
     a {
-      color: #0066cc;
+      color: #66d9ef;
       text-decoration: none;
     }
 
     a:hover {
       text-decoration: underline;
     }
+
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #888;
+      margin-top: 50px;
+    }
+
+    .description {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      color: #ddd;
+      line-height: 1.6;
+      box-shadow: 0px 0px 20px rgba(0, 212, 255, 0.2);
+      animation: float 6s ease-in-out infinite;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Floating Background Circles -->
+  <div class="circle circle1"></div>
+  <div class="circle circle2"></div>
+  <div class="circle circle3"></div>
+
+  <!-- Main Content -->
   <div class="container">
     <div class="header">
       <h1>Aayush Singhal</h1>
       <div class="quote">
         "Artificial Intelligence is not just the future – it is the engine of tomorrow's possibilities."
       </div>
+    </div>
+
+    <div class="description">
+      Bennett University, established by The Times Group, is one of India’s fastest-growing private universities. 
+      Situated in Greater Noida, it provides a world-class campus, global faculty, and state-of-the-art facilities.
+      The university focuses on innovation, research, and industry-ready skills, empowering students to excel
+      in technology, business, law, media, and beyond.
     </div>
 
     <section>
