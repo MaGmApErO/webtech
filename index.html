@@ -1,80 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bennett University - Aayush Singhal</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aayush Singhal - Resume</title>
   <style>
+    /* Background */
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      text-align: center;
+      color: #333;
+      background: linear-gradient(135deg, #e0f7fa, #e1bee7);
+      background-attachment: fixed;
     }
 
+    /* Resume container */
     .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 40px 20px;
+      max-width: 900px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px 50px;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(8px);
     }
 
-    .logo img {
-      width: 120px;
-      margin-top: 20px;
+    /* Header section */
+    .header {
+      text-align: center;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 20px;
+      margin-bottom: 30px;
     }
 
-    h1 {
-      color: #00d4ff;
+    .header img {
+      width: 100px;
       margin-bottom: 10px;
     }
 
+    h1 {
+      font-size: 32px;
+      color: #0f2027;
+      margin: 10px 0 5px;
+    }
+
     h2 {
-      color: #ccc;
-      margin-top: 5px;
+      font-size: 18px;
+      font-weight: normal;
+      color: #555;
     }
 
-    blockquote.quote {
+    .quote {
       font-style: italic;
-      margin-top: 40px;
-      color: #eee;
-      font-size: 20px;
-      border-top: 2px solid #444;
-      padding-top: 20px;
-      quotes: "“" "”" "‘" "’";
+      color: #555;
+      font-size: 18px;
+      margin-top: 10px;
     }
 
-    blockquote.quote::before {
-      content: open-quote;
+    section {
+      margin-bottom: 30px;
     }
 
-    blockquote.quote::after {
-      content: close-quote;
+    section h3 {
+      font-size: 22px;
+      color: #203a43;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .info {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      color: #444;
+    }
+
+    .info div {
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .info {
+        flex-direction: column;
+      }
     }
 
     footer {
-      margin-top: 60px;
-      color: #888;
+      text-align: center;
       font-size: 14px;
+      color: #777;
+      margin-top: 40px;
+    }
+
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="logo">
-      <img src="bennettlogo.png" alt="Bennett University Logo">
+    <div class="header">
+      <h1>Aayush Singhal</h1>
+      <div class="quote">
+        "Artificial Intelligence is not just the future – it is the engine of tomorrow's possibilities."
+      </div>
     </div>
 
-    <h1>Aayush Singhal</h1>
-    <h2>Enrollment No: E23CSEU1430</h2>
+    <section>
+      <h3>Contact</h3>
+      <div class="info">
+        <div>Email: <a href="mailto:aayush@example.com">aayush@example.com</a></div>
+        <div>Phone: +91-9876543210</div>
+        <div>LinkedIn: <a href="https://linkedin.com/in/aayushsinghal" target="_blank">linkedin.com/in/aayushsinghal</a></div>
+        <div>GitHub: <a href="https://github.com/aayushsinghal" target="_blank">github.com/aayushsinghal</a></div>
+      </div>
+    </section>
 
-    <blockquote class="quote">
-      Artificial Intelligence is not just the future – it is the engine of tomorrow's possibilities.
-    </blockquote>
+    <section>
+      <h3>Objective</h3>
+      <p>
+        Passionate and detail-oriented Computer Science student at Bennett University,
+        aspiring to leverage AI and machine learning to solve real-world challenges and create innovative solutions.
+      </p>
+    </section>
+
+    <section>
+      <h3>Education</h3>
+      <ul>
+        <li><strong>B.Tech in Computer Science</strong> – Bennett University (2023–2027)</li>
+        <li>Relevant Courses: Data Structures, Machine Learning, Artificial Intelligence, Web Development</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Skills</h3>
+      <ul>
+        <li>Programming Languages: Python, C++, JavaScript</li>
+        <li>Web Technologies: HTML, CSS, React, Node.js</li>
+        <li>Tools: Git, VS Code, Jupyter, Figma</li>
+        <li>AI/ML: TensorFlow, scikit-learn, OpenCV</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Projects</h3>
+      <ul>
+        <li><strong>AI-Powered Chatbot</strong> – Built a customer service bot using NLP and TensorFlow.</li>
+        <li><strong>Portfolio Website</strong> – Designed a responsive portfolio to showcase academic and personal projects.</li>
+        <li><strong>Weather App</strong> – Used JavaScript and OpenWeather API to display live weather updates.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Achievements</h3>
+      <ul>
+        <li>Top 10 in University Coding Hackathon – 2024</li>
+        <li>Google Cloud Career Readiness Program – Completed AI Track</li>
+        <li>Published Research Paper on "AI in Healthcare" – Bennett Tech Journal</li>
+      </ul>
+    </section>
 
     <footer>
-      &copy; 2025 Bennett University | All Rights Reserved
+      &copy; 2025 Aayush Singhal | Bennett University
     </footer>
   </div>
 </body>
