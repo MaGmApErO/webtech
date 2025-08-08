@@ -1,258 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aayush Singhal - Resume</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aayush Singhal — Bennett University</title>
   <style>
-    /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* Background gradient and font */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      background-attachment: fixed;
-      color: #ffffff;
+    /* -----------------------------
+       RESET & BASE
+       ----------------------------- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { height: 100%; }
+    body{
+      font-family: "Inter", Arial, Helvetica, sans-serif;
+      color: #e8f0ff;
+      background: linear-gradient(135deg,#071026 0%, #0f2330 35%, #1a3946 100%);
       overflow-x: hidden;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height: 1.45;
+      padding: 32px;
     }
 
-    /* Floating animation */
-    @keyframes float {
-      0%   { transform: translateY(0px); }
-      50%  { transform: translateY(-15px); }
-      100% { transform: translateY(0px); }
+    /* -----------------------------
+       ANIMATIONS
+       ----------------------------- */
+    @keyframes bgShift {
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+    @keyframes floatSlow {
+      0%{ transform: translateY(0px) }
+      50%{ transform: translateY(-18px) }
+      100%{ transform: translateY(0px) }
+    }
+    @keyframes floatMed {
+      0%{ transform: translateY(0px) }
+      50%{ transform: translateY(-12px) }
+      100%{ transform: translateY(0px) }
+    }
+    @keyframes glow {
+      0% { text-shadow: 0 0 6px rgba(0,212,255,0.4); }
+      50% { text-shadow: 0 0 20px rgba(0,212,255,0.6); }
+      100% { text-shadow: 0 0 6px rgba(0,212,255,0.4); }
     }
 
-    /* Floating background circles */
-    .circle {
+    /* -----------------------------
+       LAYOUT
+       ----------------------------- */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* Decorative floating elements (pure CSS) */
+    .decor {
       position: absolute;
-      border-radius: 50%;
-      background: rgba(0, 212, 255, 0.2);
-      animation: float 6s ease-in-out infinite;
+      inset: 0;
+      pointer-events: none;
       z-index: 0;
     }
-
-    .circle1 {
-      width: 140px;
-      height: 140px;
-      top: 60px;
-      left: 50px;
+    .dot {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.18), rgba(0,0,0,0));
+      opacity: 0.8;
+      filter: blur(10px);
+    }
+    .dot.a { width: 180px; height: 180px; top: 40px; left: -20px; animation: floatSlow 9s ease-in-out infinite; }
+    .dot.b { width: 120px; height: 120px; bottom: 40px; right: 40px; animation: floatMed 7s ease-in-out infinite; }
+    .dot.c { width: 88px; height: 88px; top: 220px; right: 180px; animation: floatSlow 11s ease-in-out infinite; }
+    .ring {
+      position: absolute;
+      width: 420px; height: 420px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 0 60px rgba(0,212,255,0.03) inset;
+      top: -80px; right: -60px;
+      transform: rotate(18deg);
+      animation: floatSlow 18s linear infinite;
     }
 
-    .circle2 {
-      width: 100px;
-      height: 100px;
-      bottom: 120px;
-      right: 80px;
-      animation-delay: 1s;
+    /* twinkling stars using pseudo elements */
+    .stars { position:absolute; inset:0; z-index:0; opacity:0.6; }
+    .stars:after, .stars:before {
+      content:"";
+      position:absolute;
+      width:3px; height:3px; background:#fff; border-radius:50%;
+      box-shadow:
+        60px 120px #fff, 200px 40px #fff, 420px 200px #fff,
+        860px 160px #fff, 960px 50px #fff, 380px 340px #fff,
+        1120px 280px #fff, 720px 60px #fff;
+      opacity:0.8;
+      filter:blur(0.6px);
+      animation: glow 3.8s ease-in-out infinite;
     }
 
-    .circle3 {
-      width: 180px;
-      height: 180px;
-      bottom: 50px;
-      left: 120px;
-      animation-delay: 2s;
-    }
-
-    /* Resume container */
-    .container {
-      max-width: 900px;
-      margin: 60px auto;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 40px 50px;
-      border-radius: 15px;
-      box-shadow: 0 8px 30px rgba(0, 212, 255, 0.1);
-      backdrop-filter: blur(10px);
+    /* -----------------------------
+       HEADER / HERO
+       ----------------------------- */
+    .hero {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 28px;
+      align-items: start;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
-    /* Header */
-    .header {
-      text-align: center;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-      padding-bottom: 20px;
-      margin-bottom: 30px;
-    }
-
-    .header img {
-      width: 100px;
-      margin-bottom: 10px;
-      animation: float 4s ease-in-out infinite;
-    }
-
-    h1 {
-      font-size: 32px;
-      color: #00d4ff;
-      margin: 10px 0 5px;
-      animation: float 5s ease-in-out infinite;
-    }
-
-    h2 {
-      font-size: 18px;
-      font-weight: normal;
-      color: #ccc;
-    }
-
-    .quote {
-      font-style: italic;
-      color: #ffdf91;
-      font-size: 18px;
-      margin-top: 15px;
-    }
-
-    section {
-      margin-bottom: 30px;
-    }
-
-    section h3 {
-      font-size: 22px;
-      color: #00e5ff;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-      padding-bottom: 5px;
-      margin-bottom: 15px;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    li {
-      margin-bottom: 8px;
-      color: #eee;
-    }
-
-    .info {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      margin-top: 10px;
-      color: #ccc;
-    }
-
-    .info div {
-      margin-bottom: 10px;
-    }
-
-    @media (max-width: 600px) {
-      .info {
-        flex-direction: column;
-      }
-    }
-
-    a {
-      color: #66d9ef;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 14px;
-      color: #888;
-      margin-top: 50px;
-    }
-
-    .description {
-      background: rgba(255, 255, 255, 0.05);
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 14px;
       padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 30px;
-      color: #ddd;
-      line-height: 1.6;
-      box-shadow: 0px 0px 20px rgba(0, 212, 255, 0.2);
-      animation: float 6s ease-in-out infinite;
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
     }
+
+    /* left column / profile */
+    .profile {
+      padding: 22px;
+    }
+    .avatar {
+      width: 120px; height:120px; border-radius:16px;
+      background: linear-gradient(135deg,#052a36,#0e5c73);
+      display:flex; align-items:center; justify-content:center;
+      font-weight:700; font-size:28px; color:#e6fbff;
+      margin: 0 auto 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 12px rgba(0,212,255,0.06);
+      animation: floatMed 5s ease-in-out infinite;
+    }
+    .name { text-align:center; font-size:20px; color:#dff8ff; margin-bottom:6px; font-weight:700; animation: glow 4s ease-in-out infinite; }
+    .subtitle { text-align:center; color:#bcd6e6; font-size:13px; margin-bottom:14px; }
+
+    .contact-list { font-size:14px; color:#cfeeff; line-height:1.6; margin-top:8px; }
+    .contact-list a { color:#b6e8ff; text-decoration:none; word-break:break-all; }
+    .contact-item { display:flex; gap:10px; align-items:center; padding:8px 6px; border-radius:8px; transition:background .18s; }
+    .contact-item:hover { background: rgba(0,212,255,0.03); }
+
+    .small-badge {
+      display:inline-block; font-size:12px; color:#002b36; background:linear-gradient(90deg,#87f2ff,#00b9ff);
+      padding:6px 10px; border-radius:999px; margin-top:12px; box-shadow:0 6px 18px rgba(0,185,255,0.08);
+    }
+
+    /* right column / details */
+    .details { padding: 18px 22px; }
+
+    .topline { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:8px; }
+    .objective {
+      font-size:15px; color:#e6f7ff;
+      background: linear-gradient(90deg, rgba(0,212,255,0.03), rgba(255,255,255,0.02));
+      padding:14px; border-radius:10px; border:1px solid rgba(255,255,255,0.03);
+      margin-bottom:16px;
+    }
+
+    .grid-2 {
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+
+    h3.section-title {
+      font-size:16px; color:#dff8ff; margin-bottom:8px; letter-spacing:0.2px;
+    }
+
+    .list {
+      font-size:14px; color:#dbeffd; line-height:1.6;
+    }
+
+    /* skills chips */
+    .chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+    .chip {
+      font-size:13px; padding:8px 10px; border-radius:999px;
+      background: rgba(255,255,255,0.03); color:#d8f6ff; border:1px solid rgba(255,255,255,0.02);
+    }
+
+    /* projects & achievements full width section */
+    .projects {
+      margin-top: 22px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .project-item {
+      background: rgba(255,255,255,0.02); padding:14px; border-radius:10px; border:1px solid rgba(255,255,255,0.03);
+    }
+    .project-item h4 { font-size:15px; color:#dff8ff; margin-bottom:6px; }
+    .project-item p { font-size:14px; color:#d7ecff; opacity:0.95; }
+
+    /* quote bar */
+    .quote {
+      margin-top:18px; padding:14px; border-radius:10px; background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+      border:1px solid rgba(255,255,255,0.03); font-style:italic; color:#fff0d6; text-align:center;
+      text-shadow: 0 0 8px rgba(255,210,140,0.06);
+    }
+
+    /* footer */
+    footer {
+      margin-top:28px; text-align:center; color:#99b8cf; font-size:13px;
+    }
+
+    /* responsive */
+    @media (max-width: 920px) {
+      .hero{ grid-template-columns: 1fr; }
+      .avatar { margin-bottom:10px; width:110px; height:110px; }
+    }
+    @media (max-width:600px) {
+      body { padding:18px; }
+      .grid-2 { grid-template-columns:1fr; }
+    }
+
+    /* subtle link underline hover */
+    a.link {
+      color:#adf0ff; text-decoration:none; border-bottom:1px dashed rgba(173,240,255,0.08);
+    }
+    a.link:hover { border-bottom-color: rgba(173,240,255,0.4); }
+
   </style>
 </head>
 <body>
+  <div class="page">
 
-  <!-- Floating Background Circles -->
-  <div class="circle circle1"></div>
-  <div class="circle circle2"></div>
-  <div class="circle circle3"></div>
-
-  <!-- Main Content -->
-  <div class="container">
-    <div class="header">
-      <h1>Aayush Singhal</h1>
-      <div class="quote">
-        "Artificial Intelligence is not just the future – it is the engine of tomorrow's possibilities."
-      </div>
+    <!-- Decorative layers -->
+    <div class="decor" aria-hidden="true">
+      <div class="stars"></div>
+      <div class="dot a"></div>
+      <div class="dot b"></div>
+      <div class="dot c"></div>
+      <div class="ring"></div>
     </div>
 
-    <div class="description">
-      Bennett University, established by The Times Group, is one of India’s fastest-growing private universities. 
-      Situated in Greater Noida, it provides a world-class campus, global faculty, and state-of-the-art facilities.
-      The university focuses on innovation, research, and industry-ready skills, empowering students to excel
-      in technology, business, law, media, and beyond.
-    </div>
+    <!-- HERO -->
+    <section class="hero">
+      <!-- LEFT: profile card -->
+      <aside class="card profile" aria-labelledby="profileHeading">
+        <div class="avatar" aria-hidden="true">AS</div>
+        <div id="profileHeading" class="name">Aayush Singhal</div>
+        <div class="subtitle">B.Tech — Computer Science (2023–2027) • Bennett University</div>
 
-    <section>
-      <h3>Contact</h3>
-      <div class="info">
-        <div>Email: <a href="mailto:aayush@example.com">aayush@example.com</a></div>
-        <div>Phone: +91-9876543210</div>
-        <div>LinkedIn: <a href="https://linkedin.com/in/aayushsinghal" target="_blank">linkedin.com/in/aayushsinghal</a></div>
-        <div>GitHub: <a href="https://github.com/aayushsinghal" target="_blank">github.com/aayushsinghal</a></div>
-      </div>
-    </section>
+        <div class="contact-list">
+          <div class="contact-item"><strong>Email:</strong>&nbsp;<a class="link" href="mailto:aayush@example.com">aayush@example.com</a></div>
+          <div class="contact-item"><strong>Phone:</strong>&nbsp;<a class="link" href="tel:+919876543210">+91-98765-43210</a></div>
+          <div class="contact-item"><strong>LinkedIn:</strong>&nbsp;<a class="link" href="https://linkedin.com/in/aayushsinghal" target="_blank" rel="noopener">linkedin.com/in/aayushsinghal</a></div>
+          <div class="contact-item"><strong>GitHub:</strong>&nbsp;<a class="link" href="https://github.com/aayushsinghal" target="_blank" rel="noopener">github.com/aayushsinghal</a></div>
+        </div>
 
-    <section>
-      <h3>Objective</h3>
-      <p>
-        Passionate and detail-oriented Computer Science student at Bennett University,
-        aspiring to leverage AI and machine learning to solve real-world challenges and create innovative solutions.
-      </p>
-    </section>
+        <div style="text-align:center;">
+          <span class="small-badge">AI • ML • Web • CV</span>
+        </div>
+      </aside>
 
-    <section>
-      <h3>Education</h3>
-      <ul>
-        <li><strong>B.Tech in Computer Science</strong> – Bennett University (2023–2027)</li>
-        <li>Relevant Courses: Data Structures, Machine Learning, Artificial Intelligence, Web Development</li>
-      </ul>
-    </section>
+      <!-- RIGHT: details card -->
+      <main class="card details" role="main" aria-labelledby="mainHeading">
+        <div class="topline">
+          <h2 id="mainHeading" style="color:#bff2ff; font-size:20px;">Aspiring AI & ML Engineer</h2>
+          <div style="font-size:13px; color:#9fcbe0;">Enrollment: <strong>E23CSEU1430</strong></div>
+        </div>
 
-    <section>
-      <h3>Skills</h3>
-      <ul>
-        <li>Programming Languages: Python, C++, JavaScript</li>
-        <li>Web Technologies: HTML, CSS, React, Node.js</li>
-        <li>Tools: Git, VS Code, Jupyter, Figma</li>
-        <li>AI/ML: TensorFlow, scikit-learn, OpenCV</li>
-      </ul>
-    </section>
+        <div class="objective">
+          <strong>Objective —</strong>
+          Passionate and detail-oriented Computer Science student at Bennett University, aspiring to leverage AI and
+          machine learning to solve real-world challenges and create innovative solutions.
+        </div>
 
-    <section>
-      <h3>Projects</h3>
-      <ul>
-        <li><strong>AI-Powered Chatbot</strong> – Built a customer service bot using NLP and TensorFlow.</li>
-        <li><strong>Portfolio Website</strong> – Designed a responsive portfolio to showcase academic and personal projects.</li>
-        <li><strong>Weather App</strong> – Used JavaScript and OpenWeather API to display live weather updates.</li>
-      </ul>
-    </section>
+        <div class="grid-2">
+          <section>
+            <h3 class="section-title">Education</h3>
+            <div class="list">
+              <strong>B.Tech in Computer Science</strong><br>
+              Bennett University (2023–2027)<br>
+              <small style="color:#bcd6e6">Relevant: Data Structures, Machine Learning, Artificial Intelligence, Web Development</small>
+            </div>
+          </section>
 
-    <section>
-      <h3>Achievements</h3>
-      <ul>
-        <li>Top 10 in University Coding Hackathon – 2024</li>
-        <li>Google Cloud Career Readiness Program – Completed AI Track</li>
-        <li>Published Research Paper on "AI in Healthcare" – Bennett Tech Journal</li>
-      </ul>
+          <section>
+            <h3 class="section-title">Skills</h3>
+            <div class="chips" aria-label="skills list">
+              <span class="chip">Python</span>
+              <span class="chip">C++</span>
+              <span class="chip">JavaScript</span>
+              <span class="chip">HTML & CSS</span>
+              <span class="chip">React</span>
+              <span class="chip">Node.js</span>
+              <span class="chip">TensorFlow</span>
+              <span class="chip">scikit-learn</span>
+              <span class="chip">OpenCV</span>
+              <span class="chip">Git</span>
+              <span class="chip">Figma</span>
+            </div>
+          </section>
+        </div>
+
+        <div class="projects">
+          <div class="project-item">
+            <h4>AI-Powered Chatbot</h4>
+            <p>Built a customer service bot using NLP pipelines, intent classification, and TensorFlow for intent routing. Deployed a lightweight REST API for integration.</p>
+          </div>
+
+          <div class="project-item">
+            <h4>Portfolio Website</h4>
+            <p>Designed a responsive portfolio using HTML/CSS and React to showcase academic & personal projects with live demos and source links.</p>
+          </div>
+
+          <div class="project-item">
+            <h4>Weather App</h4>
+            <p>Built a web app using JavaScript and OpenWeather API to display live weather data, caching results locally for quick access.</p>
+          </div>
+
+          <div class="project-item">
+            <h4>Published Paper</h4>
+            <p>Co-authored "AI in Healthcare" — published in Bennett Tech Journal. Covered ML models for diagnostics and privacy-aware data handling.</p>
+          </div>
+        </div>
+
+        <div style="flex:1; min-width:230px; margin-top:16px;">
+          <h3 class="section-title">Achievements</h3>
+          <div class="list">
+            • Top 10 in University Coding Hackathon — 2024<br>
+            • Google Cloud Career Readiness Program — Completed AI Track<br>
+            • Published research in Bennett Tech Journal
+          </div>
+        </div>
+
+        <div class="quote" aria-label="personal quote">
+          "Artificial Intelligence is not just the future – it is the engine of tomorrow's possibilities."
+        </div>
+
+      </main>
     </section>
 
     <footer>
-      &copy; 2025 Aayush Singhal | Bennett University
+      © 2025 Aayush Singhal | Bennett University — <span style="color:#b6e8ff">Made with HTML & CSS</span>
     </footer>
   </div>
 </body>
